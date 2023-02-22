@@ -2,6 +2,8 @@
 
 {
   devcontainer.enable = true;
+  allowUnfree = true;
+
   
   packages = [
     pkgs.jq
