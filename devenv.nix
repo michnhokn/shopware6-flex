@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 
 {
+  devcontainer.enable = true;
+  
   packages = [
     pkgs.jq
     pkgs.gnupatch
@@ -18,6 +20,7 @@
      extensions = [
         "grpc"
         "mongodb"
+        "amqp"
     ];
 
     ini = ''
