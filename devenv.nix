@@ -2,8 +2,6 @@
 
 {
   devcontainer.enable = true;
-  allowUnfree = true;
-
   
   packages = [
     pkgs.jq
@@ -98,7 +96,7 @@
   services.adminer.enable = lib.mkDefault true;
   services.adminer.listen = lib.mkDefault "127.0.0.1:8010";
   services.mailhog.enable = lib.mkDefault true;
-  services.mongodb.enable = true;
+  # services.mongodb.enable = true;
 
   #services.rabbitmq.enable = true;
   #services.rabbitmq.managementPlugin.enable = true;

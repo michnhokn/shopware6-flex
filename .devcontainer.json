@@ -1,6 +1,6 @@
 {
   "name": "KoRo Onlineshp",
-  "image": "ghcr.io/cachix/devenv:latest",
+  "image": "ghcr.io/zombiezen/codespaces-nix",
   "overrideCommand": false,
   "customizations": {
     "vscode": {
