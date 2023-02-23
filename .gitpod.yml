@@ -17,10 +17,13 @@ vscode:
 
 tasks:
   - name: Devenv Processes
-    init: rm .devenv.flake.nix
+    init: rm -f .devenv.flake.nix
     command: devenv up
   - name: Devenv Shell
-    command: devenv shell
+    command: |
+      devenv shell
+      composer install
+      bin/console sytsem:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
     openMode: split-right
 
 ports:
