@@ -1,30 +1,23 @@
 FROM gitpod/workspace-base
 
-USER root
-
 # Install Nix
-RUN addgroup --system nixbld \
-  && adduser gitpod nixbld \
-  && for i in $(seq 1 30); do useradd -ms /bin/bash nixbld$i &&  adduser nixbld$i nixbld; done \
-  && mkdir -m 0755 /nix && chown gitpod /nix \
-  && mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf
-  
 CMD /bin/bash -l
-USER gitpod
-ENV USER gitpod
 WORKDIR /home/gitpod
-
-# Install Nix
-RUN curl https://nixos.org/nix/install | sh
+RUN sh <(curl -L https://nixos.org/nix/install) --no-daemon --yes
 
 # Allow unfree packages
-#RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
+RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
 
 # Install cachix
-#RUN nix-env -iA cachix -f https://cachix.org/api/v1/install && cachix use cachix
+RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+    && nix-env -iA cachix -f https://cachix.org/api/v1/install \
+    && cachix use cachix
 
 # Install devenv
-#RUN nix-env -if https://github.com/cachix/devenv/tarball/latest && cachix use shopware
+RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+    && nix-env -if https://github.com/cachix/devenv/tarball/latest \
+    && cachix use shopware
 
 # Install git
-#RUN nix-env -i git git-lfs
+RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+    && nix-env -i git git-lfs
