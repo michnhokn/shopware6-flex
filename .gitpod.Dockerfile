@@ -18,21 +18,18 @@ WORKDIR /home/gitpod
 RUN touch .bash_profile && curl https://nixos.org/nix/install | sh
 
 RUN echo '. /home/gitpod/.nix-profile/etc/profile.d/nix.sh' >> /home/gitpod/.bashrc
-RUN cat /home/gitpod/.bashrc
+RUN source /home/gitpod/.bashrc
 
 # Allow unfree packages
 RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
 
 # Install cachix
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -iA cachix -f https://cachix.org/api/v1/install \
+RUN nix-env -iA cachix -f https://cachix.org/api/v1/install \
   && cachix use cachix
 
 # Install devenv
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && nix-env -if https://github.com/cachix/devenv/tarball/latest \
+RUN nix-env -if https://github.com/cachix/devenv/tarball/latest \
     && cachix use shopware
 
 # Install git
-RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-  && nix-env -i git git-lfs
+RUN nix-env -i git git-lfs
