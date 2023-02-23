@@ -17,6 +17,7 @@ vscode:
 
 tasks:
   - name: Devenv Processes
+    init: rm .devenv.flake.nix
     command: devenv up
   - name: Devenv Shell
     command: devenv shell
