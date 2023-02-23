@@ -1,4 +1,4 @@
-FROM ghcr.io/cachix/devenv
+FROM ghcr.io/zombiezen/codespaces-nix
 
 # Install Nix
 #CMD /bin/bash -l
