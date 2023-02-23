@@ -5,11 +5,10 @@
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
-image: ghcr.io/zombiezen/codespaces-nix
+image: nixos/nix
 
 vscode:
   extensions:
-    - mkhl.direnv
     - bbenoist.Nix
     - bmewburn.vscode-intelephense-client
     - Vue.volar
