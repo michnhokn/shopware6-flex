@@ -23,24 +23,24 @@ tasks:
     init: echo "HTTPS=on" >> .env
     command: |
       devenv shell composer install
-      devenv shell APP_URL=$(gp url 8000) bin/console system:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
+      APP_URL=$(gp url 8000) devenv shell bin/console system:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
       devenv shell bin/console framework:demodata --products 300 -e prod
       devenv shell bin/console dal:refresh:index -e prod
       devenv shell
+  - name: Welcome
+    command: htop
+
 
 ports:
   - port: 8000
     description: Shopware
-    onOpen: open-browser
-    visibility: private
+    onOpen: open-preview
   - port: 8010
     description: Adminer
     onOpen: ignore
-    visibility: private
   - port: 8025
     description: Mailhog
-    onOpen: open-browser
-    visibility: private
+    onOpen: ignore
   - port: 1025
     onOpen: ignore
   - port: 2019
