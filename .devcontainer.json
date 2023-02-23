@@ -1,22 +1,9 @@
 {
-  "name": "KoRo Onlineshp",
-  "image": "ghcr.io/zombiezen/codespaces-nix",
+  "image": "ghcr.io/cachix/devenv:latest",
   "overrideCommand": false,
   "customizations": {
     "vscode": {
-      "extensions": [
-        "mkhl.direnv",
-        "bbenoist.Nix",
-        "whatwedo.twig",
-        "bmewburn.vscode-intelephense-client",
-        "Vue.volar"
-      ]
+      "extensions": ["mkhl.direnv"]
     }
-  },
-  "forwardPorts": [
-    8000,
-    9080,
-    8025,
-    8080
-  ]
+  }
 }

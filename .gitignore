@@ -2,6 +2,7 @@
 /vendor/
 node_modules
 /*.sql*
+/.uniqueid.txt
 
 ###> shopware/core ###
 .env.local
