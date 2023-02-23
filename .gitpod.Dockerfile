@@ -3,7 +3,7 @@ FROM gitpod/workspace-base
 # Install Nix
 CMD /bin/bash -l
 WORKDIR /home/gitpod
-RUN sh <(curl -L https://nixos.org/nix/install) --no-daemon --yes
+RUN curl -L https://nixos.org/nix/install | sh --no-daemon --yes
 
 # Allow unfree packages
 RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
