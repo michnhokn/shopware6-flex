@@ -27,7 +27,8 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
   && cachix use cachix
 
 # Install devenv
-RUN nix-env -if https://github.com/cachix/devenv/tarball/latest \
+RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
+    && nix-env -if https://github.com/cachix/devenv/tarball/latest \
     && cachix use shopware
 
 # Install git
