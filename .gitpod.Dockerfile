@@ -1,6 +1,10 @@
 FROM ghcr.io/zombiezen/codespaces-nix
 
 # Install Nix
+CMD /bin/bash -l
+USER gitpod
+ENV USER gitpod
+WORKDIR /home/gitpod
 #CMD /bin/bash -l
 #WORKDIR /home/gitpod
 #RUN curl -L https://nixos.org/nix/install -o nix-install.sh
