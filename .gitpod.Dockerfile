@@ -6,6 +6,9 @@ WORKDIR /home/gitpod
 RUN curl -L https://nixos.org/nix/install -o nix-install.sh
 RUN sh ./nix-install.sh --no-daemon --yes
 
+# enable nix-env
+RUN echo '. /home/gitpod/.nix-profile/etc/profile.d/nix.sh' >> /home/gitpod/.bashrc
+
 # Allow unfree packages
 RUN mkdir -p /home/gitpod/.config/nixpkgs && echo '{ allowUnfree = true; }' >> /home/gitpod/.config/nixpkgs/config.nix
 
@@ -16,7 +19,7 @@ RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
 
 # Install devenv
 RUN . /home/gitpod/.nix-profile/etc/profile.d/nix.sh \
-    && nix-env -if https://github.com/cachix/devenv/tarball/latest \
+    && nix-env -i -f https://github.com/cachix/devenv/tarball/latest \
     && cachix use shopware
 
 # Install git
