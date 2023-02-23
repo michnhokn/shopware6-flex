@@ -1,11 +1,5 @@
 FROM gitpod/workspace-base
 
-# Install Nix
-USER root
-RUN adduser gitpod \
-  && mkdir -m 0755 /nix && chown gitpod /nix \
-  && mkdir -p /etc/nix && echo 'sandbox = false' > /etc/nix/nix.conf
-
 CMD /bin/bash -l
 USER gitpod
 ENV USER gitpod
