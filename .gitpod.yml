@@ -20,11 +20,13 @@ tasks:
     init: rm -f .devenv.flake.nix
     command: devenv up
   - name: Devenv Shell
-    init: devenv shell
+    init: echo "HTTPS=on" >> .env
     command: |
-      composer install
-      bin/console sytsem:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
-    openMode: split-right
+      devenv shell composer install
+      devenv shell APP_URL=$(gp url 8000) bin/console system:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
+      devenv shell bin/console framework:demodata --products 300 -e prod
+      devenv shell bin/console dal:refresh:index -e prod
+      devenv shell
 
 ports:
   - port: 8000
@@ -39,3 +41,13 @@ ports:
     description: Mailhog
     onOpen: open-browser
     visibility: private
+  - port: 1025
+    onOpen: ignore
+  - port: 2019
+    onOpen: ignore
+  - port: 3306
+    onOpen: ignore
+  - port: 6379
+    onOpen: ignore
+  - port: 33060
+    onOpen: ignore
