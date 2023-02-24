@@ -34,9 +34,7 @@ tasks:
     command: |
       gp preview $(gp url 8000)
       devenv shell
-  - name: Welcome
-    init: htop
-
+    openMode: split-right
 
 ports:
   - port: 8000
