@@ -110,7 +110,7 @@
   scripts.build-storefront.exec = lib.mkDefault "bin/build-storefront.sh";
   scripts.watch-storefront.exec = lib.mkDefault "bin/watch-storefront.sh";
   scripts.build-administration.exec = lib.mkDefault "bin/build-administration.sh";
-  scripts.watch-administration.exec = lib.mkDefault "bin/watch-administration.sh";
+  scripts.watch-administration.exec = lib.mkDefault "APP_URL=http://localhost:8000 bin/watch-administration.sh";
   scripts.theme-refresh.exec = lib.mkDefault "bin/console theme-refresh";
   scripts.theme-compile.exec = lib.mkDefault "bin/console theme-compile";
 
