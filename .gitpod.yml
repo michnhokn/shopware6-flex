@@ -24,8 +24,10 @@ tasks:
   - name: Devenv Shell
     init: |
       echo "HTTPS=on" >> .env.local
+      echo "MONGODB_CART_ENABLED=0" >> .env.local
+      echo "APP_URL=$(gp url 8000)" >> .env.local
       devenv shell composer install
-      APP_URL=$(gp url 8000) devenv shell bin/console system:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
+      devenv shell bin/console system:install -fn --create-database --basic-setup --shop-name="KoRo Demo" --shop-email=noreply@koro.software --shop-currency=EUR --shop-locale=de-DE
       devenv shell bin/console framework:demodata --products 300 -e prod
       devenv shell bin/console dal:refresh:index -e prod
     command: devenv shell

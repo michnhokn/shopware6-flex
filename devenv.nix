@@ -102,15 +102,6 @@
   #services.rabbitmq.managementPlugin.enable = true;
   #services.elasticsearch.enable = true;
 
-  # Environment variables
-  env.APP_SECRET = lib.mkDefault "devsecret";
-  env.APP_URL = lib.mkDefault "http://localhost:8000";
-  env.MAILER_DSN = lib.mkDefault "smtp://localhost:1025";
-  env.DATABASE_URL = lib.mkDefault "mysql://shopware:shopware@localhost:3306/shopware";
-  env.MONGODB_CART_ENABLED = lib.mkDefault "1";
-  env.MONGODB_URL = lib.mkDefault "mongodb://localhost:27017";
-  env.CYPRESS_baseUrl = lib.mkDefault "http://localhost:8000";
-
   # Webpack compatibility
   env.NODE_OPTIONS = lib.mkDefault "--openssl-legacy-provider";
 
