@@ -18,11 +18,15 @@
      extensions = [
         "grpc"
         "mongodb"
+        "amqp"
     ];
 
     ini = ''
       memory_limit = 2G
-      realpath_cache_ttl = 3600
+      upload_max_filesize = 100M
+      post_max_size = 100M
+      max_execution_time = 120
+      realpath_cache_ttl = 3600J
       session.gc_probability = 0
       ${lib.optionalString config.services.redis.enable ''
       session.save_handler = redis
@@ -94,32 +98,14 @@
   services.adminer.listen = lib.mkDefault "127.0.0.1:8010";
   services.mailhog.enable = lib.mkDefault true;
   services.mongodb.enable = true;
+  services.rabbitmq = {
+    enable = true;
+    managementPlugin.enable = true;
+  };
 
-  #services.rabbitmq.enable = true;
   #services.rabbitmq.managementPlugin.enable = true;
   #services.elasticsearch.enable = true;
 
-  # Environment variables
-  env.APP_SECRET = lib.mkDefault "devsecret";
-  env.APP_URL = lib.mkDefault "http://localhost:8000";
-  env.MAILER_DSN = lib.mkDefault "smtp://localhost:1025";
-  env.DATABASE_URL = lib.mkDefault "mysql://shopware:shopware@localhost:3306/shopware";
-  env.MONGODB_CART_ENABLED = lib.mkDefault "1";
-  env.MONGODB_URL = lib.mkDefault "mongodb://localhost:27017";
-  env.CYPRESS_baseUrl = lib.mkDefault "http://localhost:8000";
-
   # Webpack compatibility
   env.NODE_OPTIONS = lib.mkDefault "--openssl-legacy-provider";
-
-  # Shopware 6 related scripts
-  scripts.build-js.exec = lib.mkDefault "bin/build-js.sh";
-  scripts.build-storefront.exec = lib.mkDefault "bin/build-storefront.sh";
-  scripts.watch-storefront.exec = lib.mkDefault "bin/watch-storefront.sh";
-  scripts.build-administration.exec = lib.mkDefault "bin/build-administration.sh";
-  scripts.watch-administration.exec = lib.mkDefault "bin/watch-administration.sh";
-  scripts.theme-refresh.exec = lib.mkDefault "bin/console theme-refresh";
-  scripts.theme-compile.exec = lib.mkDefault "bin/console theme-compile";
-
-  # Symfony related scripts
-  scripts.cc.exec = lib.mkDefault "bin/console cache:clear";
 }

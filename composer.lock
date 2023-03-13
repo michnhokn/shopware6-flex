@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c8565b0a5fe04c0121655ff091931d0",
+    "content-hash": "427bd960f48823d0bfdc75160bb2fa85",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -2585,6 +2585,32 @@
             "time": "2022-12-22T08:34:57+00:00"
         },
         {
+            "name": "frosh/gitpod-meta",
+            "version": "6.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfShopware/gitpod-meta.git",
+                "reference": "3629ca7019e9b726243baf83afe55f5a2f90cef5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfShopware/gitpod-meta/zipball/3629ca7019e9b726243baf83afe55f5a2f90cef5",
+                "reference": "3629ca7019e9b726243baf83afe55f5a2f90cef5",
+                "shasum": ""
+            },
+            "type": "metapackage",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A meta package providing recipes for Gitpod",
+            "support": {
+                "issues": "https://github.com/FriendsOfShopware/gitpod-meta/issues",
+                "source": "https://github.com/FriendsOfShopware/gitpod-meta/tree/6.4.0"
+            },
+            "time": "2022-10-13T08:54:22+00:00"
+        },
+        {
             "name": "google/auth",
             "version": "v1.25.0",
             "source": {
@@ -4032,6 +4058,59 @@
                 }
             ],
             "time": "2021-06-28T04:27:21+00:00"
+        },
+        {
+            "name": "lorenzo/pinky",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lorenzo/pinky.git",
+                "reference": "f890472e4a25f89591f176aa03d9588a9d3332a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lorenzo/pinky/zipball/f890472e4a25f89591f176aa03d9588a9d3332a7",
+                "reference": "f890472e4a25f89591f176aa03d9588a9d3332a7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "ext-xsl": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.21 || ^9.5.10"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/pinky.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jose Lorenzo Rodriguez",
+                    "email": "jose.zap@gmail.com"
+                }
+            ],
+            "description": "A Foundation for Emails (Inky) template transpiler",
+            "keywords": [
+                "email",
+                "foundation",
+                "inky",
+                "template",
+                "zurb"
+            ],
+            "support": {
+                "issues": "https://github.com/lorenzo/pinky/issues",
+                "source": "https://github.com/lorenzo/pinky/tree/1.0.9"
+            },
+            "time": "2023-01-12T16:15:52+00:00"
         },
         {
             "name": "marc1706/fast-image-size",
@@ -6558,6 +6637,113 @@
                 "source": "https://github.com/stella-maris-solutions/clock/tree/0.1.7"
             },
             "time": "2022-11-25T16:15:06+00:00"
+        },
+        {
+            "name": "store.shopware.com/froshplatformtemplatemail",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.shopware.com/download?downloadUrl=%2Fpackages%2Fplugins%2FFroshPlatformTemplateMail%2Fbinaries%2F1.0.0"
+            },
+            "require": {
+                "lorenzo/pinky": "^1.0.6",
+                "shopware/core": "~6.4.1"
+            },
+            "replace": {
+                "frosh/frosh-platform-template-mail": "self.version"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "label": {
+                    "de-DE": "Mail Templates aus dem Theme verwenden",
+                    "en-GB": "Use mail templates from theme"
+                },
+                "description": {
+                    "de-DE": "Erlaubt es die Mail Templates in das Theme abzulegen. Dadurch sind sie versioniert und leichter zu deployen zwischen mehreren Umgebungen. Ebenfalls wird MJML unterstützt",
+                    "en-GB": "Allows to store the mail templates in the theme. This makes them versioned and easier to deploy between multiple environments. Also MJML is supported."
+                },
+                "supportLink": {
+                    "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail/issues",
+                    "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail/issues"
+                },
+                "manufacturerLink": {
+                    "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail",
+                    "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail"
+                },
+                "shopware-plugin-class": "Frosh\\TemplateMail\\FroshPlatformTemplateMail"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Frosh\\TemplateMail\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Frosh\\TemplateMail\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packages.shopware.com/downloads/",
+            "authors": [
+                {
+                    "name": "FriendsOfShopware",
+                    "homepage": "https://friendsofshopware.de"
+                }
+            ],
+            "description": "Load mail templates from theme"
+        },
+        {
+            "name": "store.shopware.com/tanmarngproductreviews",
+            "version": "1.6.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.shopware.com/download?downloadUrl=%2Fpackages%2Fplugins%2FTanmarNgProductReviews%2Fbinaries%2F1.6.1"
+            },
+            "require": {
+                "shopware/administration": "*",
+                "shopware/core": "~6.4",
+                "shopware/storefront": "*"
+            },
+            "replace": {
+                "tanmar/product-reviews": "self.version"
+            },
+            "type": "shopware-platform-plugin",
+            "extra": {
+                "label": {
+                    "de-DE": "Kundenfreundliche Artikel Bewertungen",
+                    "en-GB": "Customer Friendly Product Reviews"
+                },
+                "copyright": "(c) by Tanmar Webentwicklung",
+                "description": {
+                    "de-DE": "Kundenfreundliche Artikel Bewertungen für Shopware 6",
+                    "en-GB": "Customer Friendly Product Reviews"
+                },
+                "supportLink": {
+                    "de-DE": "https://www.tanmar.de/kontakt/",
+                    "en-GB": "https://www.tanmar.de/kontakt/"
+                },
+                "manufacturerLink": {
+                    "de-DE": "https://www.tanmar.de",
+                    "en-GB": "https://www.tanmar.de"
+                },
+                "shopware-plugin-class": "Tanmar\\ProductReviews\\TanmarNgProductReviews"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tanmar\\ProductReviews\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tanmar\\ProductReviews\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packages.shopware.com/downloads/",
+            "authors": [
+                {
+                    "name": "Tanmar Webentwicklung"
+                }
+            ],
+            "description": "Customer Friendly Product Reviews"
         },
         {
             "name": "superbalist/flysystem-google-storage",
